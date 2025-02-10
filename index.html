@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haron Mwendwa - Portfolio</title>
+    <style>
+        /* Modern CSS Styles with Olivia's Color Palette */
+        :root {
+            --primary-color: #2E8B57; /* Dark Green */
+            --secondary-color: #FFA500; /* Orange */
+            --accent-color: #FFD700; /* Egg Yellow */
+            --background-color: #FFFFFF; /* White */
+            --text-color: #333333; /* Dark Gray */
+            --light-text-color: #FFFFFF; /* White */
+            --card-background: #F5F5F5; /* Light Gray */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        /* Header Section */
+        header {
+            background: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 10px 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: var(--light-text-color);
+            margin: 4px 0;
+            transition: var(--transition);
+        }
+
+        .hamburger:hover div {
+            background: var(--accent-color);
+        }
+
+        /* Dark Mode Icon */
+        #toggle-dark-mode {
+            background: none;
+            border: none;
+            color: var(--light-text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        #toggle-dark-mode:hover {
+            color: var(--accent-color);
+        }
+
+        /* Navigation Links */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header Right Section */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between hamburger and dark mode icon */
+        }
+
+        /* Hero Section */
+        #hero {
+            background: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 100px 20px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            max-width: 800px; /* Fixed width for desktop */
+            margin: 0 auto;
+        }
+
+        #hero h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        #hero p {
+            margin: 10px 0 0;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: var(--secondary-color);
+            color: var(--light-text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1rem;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Main Content Sections */
+        section {
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .services-grid, .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card, .tool-card {
+            background: var(--card-background);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover, .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card img, .tool-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3, .tool-card h3 {
+            color: var(--primary-color);
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .stat {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            --background-color: #1E1E1E; /* Dark Gray */
+            --text-color: #F5F5F5; /* Light Gray */
+            --card-background: #2C2C2C; /* Darker Gray */
+        }
+
+        .dark-mode header, .dark-mode footer {
+            background: var(--primary-color);
+        }
+
+        .dark-mode .service-card, .dark-mode .tool-card {
+            background: var(--card-background);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: var(--primary-color);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 20px 10px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Haron Mwendwa</h1>
+        <nav id="nav">
+            <a href="#home">Home</a>
+            <a href="#3d-modeling">3D Modeling</a>
+            <a href="#web-design">Web Design</a>
+            <a href="#graphic-design">Graphic Design</a>
+            <a href="#ict-solutions">ICT Solutions</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="header-right">
+            <div class="hamburger" id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <button id="toggle-dark-mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Haron Mwendwa</h1>
+            <p>3D Modeler | Graphic Designer | ICT Specialist</p>
+            <a href="#portfolio" class="cta-button">View My Work</a>
+            <a href="#" class="cta-button">Download CV</a>
+        </div>
+    </section>
+
+    <!-- 3D Modeling Section -->
+    <section id="3d-modeling">
+        <h2>3D Modeling</h2>
+        <p>I specialize in creating detailed and high-quality 3D models for various applications. My work includes realistic models built using Blender, RealityCapture, and textured using Substance Painter.</p>
+        <div class="service-card">
+            <img src="c37d2d6cbb5f430d94bc225c.jpg" alt="3D Model Preview">
+            <h3>Retro-style espresso machine with a sleek and modern design.</h3>
+            <p>A retro-style espresso machine with a sleek, modern design, featuring 
+                a metallic body with glossy and matte finishes. It includes an analog 
+                pressure gauge with a wooden accent, multiple control buttons, and a 
+                wood-textured portafilter handle.</p>
+            <a href="#" class="cta-button">View Project</a>
+        </div>
+    </section>
+
+    <!-- Web Design Section -->
+    <section id="web-design">
+        <h2>Web Design</h2>
+        <p>I create visually appealing and user-friendly websites tailored to your needs.</p>
+        <div class="service-card">
+            <img src="WhatsApp Image 2025-02-10 at 23.35.55.jpeg" alt="Web Design Preview">
+            <h3>Futuristic NFT marketplace website design</h3>
+            <p>A futuristic NFT marketplace website design displayed on a tablet screen. The UI features a dark theme with neon gradient accents, creating a modern and high-tech aesthetic.</p>
+            <a href="#" class="cta-button">View Project</a>
+        </div>
+    </section>
+
+    <!-- Graphic Design Section -->
+    <section id="graphic-design">
+        <h2>Graphic Design</h2>
+        <p>I design logos, flyers, posters, and banners for businesses and individuals.</p>
+        <div class="service-card">
+            <img src="DAYOO.jpg" alt="Graphic Design Preview">
+            <h3>A logo design for "Dayoo Fashion".</h3>
+            <p>A logo design for "Dayoo Fashion." The design is in a monochrome black-and-white color scheme, giving it a sleek and elegant appearance.</p>
+            <a href="#" class="cta-button">View Project</a>
+        </div>
+    </section>
+
+    <!-- ICT Solutions Section -->
+    <section id="ict-solutions">
+        <h2>ICT Solutions</h2>
+        <p>I provide networking, PC maintenance, and software installation services.</p>
+        <div class="service-card">
+            <img src="DSC06317.jpg" alt="ICT Solutions Preview">
+            <h3>Network Setup</h3>
+            <p>A network setup consisting of multiple networking devices, including a MikroTik router and another white router or switch.</p>
+            <a href="#" class="cta-button">View Project</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Hi, I'm Haron Mwendwa, a passionate professional with expertise in 3D modeling, graphic design, and ICT. I have worked with various clients and startups to deliver high-quality solutions.</p>
+        <div class="about-stats">
+            <div class="stat">
+                <span>50+</span>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat">
+                <span>10+</span>
+                <p>Industry Covered</p>
+            </div>
+            <div class="stat">
+                <span>5+</span>
+                <p>Years of Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out for collaborations or inquiries!</p>
+        <p><strong>Email:</strong> tskt2499@gmail.com</p>
+        <p><strong>Phone:</strong> 0743986733</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Haron Mwendwa. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the click from propagating to the document
+            nav.classList.toggle('active');
+        });
+
+        // Close the dropdown when clicking outside the navigation menu
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // JavaScript for Dark Mode Toggle
+        const toggleButton = document.getElementById('toggle-dark-mode');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = toggleButton.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+    </script>
+</body>
+</html>
